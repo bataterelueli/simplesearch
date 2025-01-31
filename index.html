@@ -12,33 +12,26 @@
             content="search, web, interface, simple, Google search, bata terelueli, terelueli, portfolio, ux, ui ux, user experience, user interface"
         />
         <meta name="author" content="Bata Terelueli" />
-
-        <!-- Open Graph (for Facebook and other social platforms) -->
         <meta property="og:title" content="New Tab" />
         <meta
             property="og:description"
             content="New Tab, the catharsis of browsing."
         />
-        <meta property="og:image" content=../icon.png />
+        <meta property="og:image" content="../icon.png" />
         <meta property="og:url" content="search.terelueli.com" />
-
-        <!-- Twitter Cards -->
-        <meta name="twitter:card" content=../icon.png />
+        <meta name="twitter:card" content="../icon.png" />
         <meta name="twitter:title" content="New Tab" />
         <meta
             name="twitter:description"
             content="A simple search page to quickly access Google search."
         />
-        <meta name="twitter:image" content=../icon.png />
-
+        <meta name="twitter:image" content="../icon.png" />
         <title>New Tab</title>
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="styles.css" />
-
-        <!-- Favicon -->
         <link rel="icon" href="favicon.png?" type="image/x-icon" />
     </head>
     <body>
@@ -69,9 +62,19 @@
         <div class="container">
             <h1>Hi Bata. Let's browse</h1>
             <form action="https://www.google.com/search" method="get">
-                <input type="text" name="q" placeholder="Search..." />
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search..."
+                    id="searchField"
+                />
                 <button type="submit">&#8594;</button>
             </form>
         </div>
+        <script>
+            window.onload = function () {
+                document.getElementById("searchField").focus();
+            };
+        </script>
     </body>
 </html>
