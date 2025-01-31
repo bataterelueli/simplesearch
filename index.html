@@ -12,6 +12,7 @@
             content="search, web, interface, simple, Google search, bata terelueli, terelueli, portfolio, ux, ui ux, user experience, user interface"
         />
         <meta name="author" content="Bata Terelueli" />
+        <!-- Open Graph (for Facebook and other social platforms) -->
         <meta property="og:title" content="New Tab" />
         <meta
             property="og:description"
@@ -19,6 +20,7 @@
         />
         <meta property="og:image" content="../icon.png" />
         <meta property="og:url" content="search.terelueli.com" />
+        <!-- Twitter Cards -->
         <meta name="twitter:card" content="../icon.png" />
         <meta name="twitter:title" content="New Tab" />
         <meta
@@ -32,6 +34,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="styles.css" />
+        <!-- Favicon -->
         <link rel="icon" href="favicon.png?" type="image/x-icon" />
     </head>
     <body>
@@ -61,7 +64,12 @@
         </div>
         <div class="container">
             <h1>Hi Bata. Let's browse</h1>
-            <form action="https://www.google.com/search" method="get">
+            <form
+                id="searchForm"
+                action="https://www.google.com/search"
+                method="get"
+                onsubmit="return handleSubmit(event)"
+            >
                 <input
                     type="text"
                     name="q"
@@ -75,6 +83,24 @@
             window.onload = function () {
                 document.getElementById("searchField").focus();
             };
+
+            function handleSubmit(event) {
+                var searchInput = document.getElementById("searchField").value;
+                var urlPattern =
+                    /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?$/;
+                if (urlPattern.test(searchInput)) {
+                    if (
+                        !searchInput.startsWith("http://") &&
+                        !searchInput.startsWith("https://")
+                    ) {
+                        searchInput = "https://" + searchInput;
+                    }
+                    window.location.href = searchInput;
+                    event.preventDefault();
+                    return false;
+                }
+                return true;
+            }
         </script>
     </body>
 </html>
