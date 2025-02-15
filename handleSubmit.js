@@ -1,7 +1,9 @@
+// When the page loads, focus on the search field
 window.onload = function () {
   document.getElementById("searchField").focus();
 };
 
+// Handle the form submission, automatically redirect to input URL, disregard if not URL
 function handleSubmit(event) {
   var searchInput = document.getElementById("searchField").value;
   var urlPattern = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?$/;
@@ -19,6 +21,7 @@ function handleSubmit(event) {
   return true;
 }
 
+// This defines an array of text options for the dynamic text
 const textOptions = [
   "Hi Bata. Let's browse",
   "What will it be for today, Bata?",
@@ -27,11 +30,11 @@ const textOptions = [
   "Awaiting your input",
 ];
 
-// Function to pick random text from the array
+// Get a random text from the textOptions array
 function getRandomText() {
   const randomIndex = Math.floor(Math.random() * textOptions.length);
   return textOptions[randomIndex];
 }
 
-// Get the h1 element and change its text
+// Update the dynamic text in the <h1> tag with a random text from the textOptions array
 document.getElementById("dynamic-text").textContent = getRandomText();
